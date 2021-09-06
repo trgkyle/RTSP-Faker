@@ -1,0 +1,11 @@
+version: "3"
+services:
+  forward-api:
+    restart: always
+    image: ullaakut/rtspatt
+    ports: 
+      - 8554:8554
+    environment: 
+      - INPUT=/tmp/video.mp4
+    volumes: 
+      - ./RTSPAllTheThings/samples/forgotten-object.mp4:/tmp/video.mp4
