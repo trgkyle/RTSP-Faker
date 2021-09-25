@@ -1,11 +1,39 @@
 version: "3"
 services:
-  forward-api:
+  fake-cam-1:
     restart: always
     image: ullaakut/rtspatt
     ports: 
-      - 8554:8554
+      - 8554
     environment: 
       - INPUT=/tmp/video.mp4
     volumes: 
-      - ./RTSPAllTheThings/samples/forgotten-object.mp4:/tmp/video.mp4
+      - ./RTSPAllTheThings/samples/video.mp4:/tmp/video.mp4
+    networks: 
+      - fis-network
+  fake-cam-2:
+    restart: always
+    image: ullaakut/rtspatt
+    ports: 
+      - 8554
+    environment: 
+      - INPUT=/tmp/video.mp4
+    volumes: 
+      - ./RTSPAllTheThings/samples/video2.mp4:/tmp/video.mp4
+    networks: 
+      - fis-network
+  fake-cam-3:
+    restart: always
+    image: ullaakut/rtspatt
+    ports: 
+      - 8554
+    environment: 
+      - INPUT=/tmp/video.mp4
+    volumes: 
+      - ./RTSPAllTheThings/samples/kyle.mp4:/tmp/video.mp4
+    networks: 
+      - fis-network
+networks: 
+  fis-network:
+    name: fis-driver
+    external: true
