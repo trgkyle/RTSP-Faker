@@ -11,6 +11,10 @@ services:
       - ./RTSPAllTheThings/samples/video.mp4:/tmp/video.mp4
     networks: 
       - fis-network
+    deploy:
+      resources:
+        limits:
+          memory: 500M
   fake-cam-2:
     restart: always
     image: ullaakut/rtspatt
@@ -22,6 +26,10 @@ services:
       - ./RTSPAllTheThings/samples/video2.mp4:/tmp/video.mp4
     networks: 
       - fis-network
+    deploy:
+      resources:
+        limits:
+          memory: 500M
   fake-cam-3:
     restart: always
     image: ullaakut/rtspatt
@@ -33,6 +41,10 @@ services:
       - ./RTSPAllTheThings/samples/kyle.mp4:/tmp/video.mp4
     networks: 
       - fis-network
+    deploy:
+      resources:
+        limits:
+          memory: 500M
 networks: 
   fis-network:
     name: fis-driver
