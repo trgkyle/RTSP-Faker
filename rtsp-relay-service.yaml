@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: horus
+  labels:
+    app: rtsp-relay
+  name: rtsp-relay
+spec:
+  ports:
+    - name: "8554"
+      port: 8554
+      targetPort: 8554
+  selector:
+    app: rtsp-relay
+status:
+  loadBalancer: {}

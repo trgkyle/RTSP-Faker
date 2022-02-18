@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: horus
+  labels:
+    app: rtsp-relay
+  name: rtsp-relay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rtsp-relay
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rtsp-relay
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: "techainer-1080ti-1"
+      containers:
+        - env:
+            - name: SOURCE_URL
+              value: file:///samples/fake-stream.mp4
+          image: flaviostutz/rtsp-relay
+          name: rtsp-relay
+          ports:
+            - containerPort: 8554
+          resources:
+            limits:
+              memory: "1G"
+          volumeMounts:
+            - mountPath: /samples
+              name: rtsp-relay-claim
+      restartPolicy: Always
+      volumes:
+        - name: rtsp-relay-claim
+          persistentVolumeClaim:
+            claimName: rtsp-relay-claim
+status: {}
