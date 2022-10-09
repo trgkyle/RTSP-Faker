@@ -19,7 +19,7 @@ spec:
       containers:
         - env:
             - name: SOURCE_URL
-              value: file:///samples/2.techainer-line-up.mp4
+              value: file:///samples/1.techainer-line-up.mp4
           image: flaviostutz/rtsp-relay
           name: rtsp-relay
           ports:
