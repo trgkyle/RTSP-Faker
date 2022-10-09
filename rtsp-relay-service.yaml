@@ -6,7 +6,24 @@ metadata:
   name: rtsp-relay
 spec:
   ports:
-    - name: "8554"
+    - name: "rtsp-relay"
+      port: 8554
+      targetPort: 8554
+  selector:
+    app: rtsp-relay
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: rtsp-relay-nodeport
+  name: rtsp-relay-nodeport
+spec:
+  type: NodePort
+  ports:
+    - name: 'rtsp-relay-nodeport'
       port: 8554
       targetPort: 8554
   selector:
