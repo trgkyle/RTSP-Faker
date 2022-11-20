@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pull-md
+spec:
+  template:
+    metadata:
+      name: pull-md
+    spec:
+      containers:
+        - name: pull-md
+          image: truonghdpk/pull-models:faciallandmark
+          volumeMounts:
+            - name: md
+              mountPath: /models
+          command: [ "cp","-r", ".", "/models" ]
+          # command: [ "tail","-f", "/dev/null"]
+
+      restartPolicy: Never
+
+      volumes:
+      - name: md
+        persistentVolumeClaim:
+          claimName: rtsp-relay-claim
