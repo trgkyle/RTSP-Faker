@@ -1,1 +1,1 @@
-docker build ./ -t truonghdpk/pull-fake-video:techainer
+docker build ./ -t truonghdpk/pull-fake-video:tech
