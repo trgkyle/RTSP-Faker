@@ -1,24 +1,24 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pull-md
+  name: pull-video
 spec:
   template:
     metadata:
-      name: pull-md
+      name: pull-video
     spec:
       containers:
-        - name: pull-md
-          image: truonghdpk/pull-models:faciallandmark
+        - name: pull-video
+          image: truonghdpk/pull-fake-video:techainer
           volumeMounts:
-            - name: md
-              mountPath: /models
-          command: [ "cp","-r", ".", "/models" ]
+            - name: video
+              mountPath: /samples-mount
+          command: [ "cp","-r", ".", "/samples" ]
           # command: [ "tail","-f", "/dev/null"]
 
       restartPolicy: Never
 
       volumes:
-      - name: md
+      - name: video
         persistentVolumeClaim:
           claimName: rtsp-relay-claim
