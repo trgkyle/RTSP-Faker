@@ -22,10 +22,6 @@ spec:
               value: file:///samples/1.techainer-line-up.mp4
           image: flaviostutz/rtsp-relay
           name: rtsp-relay
-          command:
-            - "tail"
-            - "-f"
-            - "/dev/null"
           ports:
             - containerPort: 8554
           resources:

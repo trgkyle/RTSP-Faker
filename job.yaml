@@ -12,7 +12,7 @@ spec:
           image: truonghdpk/pull-fake-video:tech
           volumeMounts:
             - name: video
-              mountPath: /samples-mount
+              mountPath: /samples
           command: [ "cp","-r", ".", "/samples" ]
           # command: [ "tail","-f", "/dev/null"]
 
