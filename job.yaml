@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
         - name: pull-video
-          image: truonghdpk/pull-fake-video:techainer
+          image: truonghdpk/pull-fake-video:tech
           volumeMounts:
             - name: video
               mountPath: /samples-mount
